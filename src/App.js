@@ -10,8 +10,7 @@ import { getFav } from "./redux/actions";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-// axios.defaults.baseURL = 'http://localhost:3001/rickandmorty';
-axios.defaults.baseURL = 'https://rickandmortybackend-production-536c.up.railway.app/';
+
 
 const regEmail =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
