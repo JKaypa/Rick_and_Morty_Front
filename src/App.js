@@ -10,11 +10,9 @@ import { getFav } from "./redux/actions";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-
-
 const regEmail =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-const regPass = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const regPass = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
 
 function App() {
   let [characters, setCharacters] = useState([]);
@@ -34,9 +32,7 @@ function App() {
     if (event.target.value === "click") {
       try {
         let random = Math.round(Math.random() * 864);
-        const { data } = await axios(
-          `/character/${random}`
-        );
+        const { data } = await axios(`/character/${random}`);
         let exist = characters.find((char) => char.id === data.id);
         if (exist) return alert("This character exists already");
         setCharacters([...characters, data]);
@@ -47,9 +43,7 @@ function App() {
     } else if (event.key === "Enter") {
       try {
         setId("");
-        const { data } = await axios(
-          `/character/${charId}`
-        );
+        const { data } = await axios(`/character/${charId}`);
         let exist = characters.find((char) => char.id === data.id);
         if (exist) return alert("This character exists already");
         setCharacters([...characters, data]);
@@ -62,9 +56,7 @@ function App() {
 
   useEffect(() => {
     async function hundred() {
-      const { data } = await axios(
-        "/allCharacters"
-      );
+      const { data } = await axios("/allCharacters");
       setCharacters(data);
       setAlwaysSameChars(data);
     }
