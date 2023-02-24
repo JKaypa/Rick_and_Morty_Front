@@ -8,7 +8,7 @@ function Detail() {
   const { id } = useParams();
   console.log(useParams());
   useEffect(() => {
-    fetch(`/detail/${id}`)
+    fetch(`http://localhost:3001/rickandmorty/detail/${id}`)
       .then((response) => response.json())
       .then((char) => {
         if (char.name) {
